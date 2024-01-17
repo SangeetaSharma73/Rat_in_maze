@@ -1,16 +1,6 @@
 import random
 from termcolor import colored
-def generate_maze(n):
-    arr = [[colored("◌", "blue") for _ in range(n)] for _ in range(n)]
-    size = n * n // 4
-    for i in range(size):
-        arr[0][0] = 'S'
-        arr[n - 1][n - 1] = 'E'
-        x, y = random.randint(0, n - 1), random.randint(0, n - 1)
-        if (x == 0 and y == 0) or (x == n - 1 and y == n - 1) or (x == 0 and y == 1) or (x == n - 2 and y == n - 1):
-            continue
-        arr[x][y] = colored('▓', 'red')
-    return arr
+
 def print_maze(maze):
     for i in range(len(maze)):
         box = ''
@@ -26,6 +16,7 @@ def print_maze(maze):
     for t in range(len(maze)):
         box += "+---"
     print(colored(box + "+", "red"))
+    
 def path(maze, st, end):
     n = len(maze)
     if st < 0 or end < 0 or st == n or end == n or maze[st][end] == colored('▓','red') or maze[st][end] == '◍':
@@ -42,6 +33,19 @@ def path(maze, st, end):
     if not path_found:
         maze[st][end] = colored('◌', 'blue')
     return maze
+
+def generate_maze(n):
+    arr = [[colored("◌", "blue") for _ in range(n)] for _ in range(n)]
+    size = n * n // 4
+    for i in range(size):
+        arr[0][0] = 'S'
+        arr[n - 1][n - 1] = 'E'
+        x, y = random.randint(0, n - 1), random.randint(0, n - 1)
+        if (x == 0 and y == 0) or (x == n - 1 and y == n - 1) or (x == 0 and y == 1) or (x == n - 2 and y == n - 1):
+            continue
+        arr[x][y] = colored('▓', 'red')
+    return arr
+
 def main():
     n = int(input('Enter the size of the maze (nxn): '))
     maze = generate_maze(n)
