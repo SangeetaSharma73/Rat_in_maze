@@ -1,7 +1,31 @@
+import random
+from termcolor import colored
 def generate_maze(n):
-    pass
+    arr = [[colored("◌", "blue") for _ in range(n)] for _ in range(n)]
+    size = n * n // 4
+    for i in range(size):
+        arr[0][0] = 'S'
+        arr[n - 1][n - 1] = 'E'
+        x, y = random.randint(0, n - 1), random.randint(0, n - 1)
+        if (x == 0 and y == 0) or (x == n - 1 and y == n - 1) or (x == 0 and y == 1) or (x == n - 2 and y == n - 1):
+            continue
+        arr[x][y] = colored('▓', 'red')
+    return arr
 def print_maze(maze):
-    pass
+    for i in range(len(maze)):
+        box = ''
+        for k in range(len(maze)):
+            box += "+---"
+        print(colored(box + "+", "red"))
+
+        print('| ', end='')
+        for j in range(len(maze)):
+            print(maze[i][j], end=" | ")
+        print()
+    box = ''
+    for t in range(len(maze)):
+        box += "+---"
+    print(colored(box + "+", "red"))
 def path():
     pass
 def main():
