@@ -12,7 +12,20 @@ def generate_maze(n):
         arr[x][y] = colored('▓', 'red')
     return arr
 def print_maze(maze):
-    pass
+    for i in range(len(maze)):
+        box = ''
+        for k in range(len(maze)):
+            box += "+---"
+        print(colored(box + "+", "red"))
+
+        print('| ', end='')
+        for j in range(len(maze)):
+            print(maze[i][j], end=" | ")
+        print()
+    box = ''
+    for t in range(len(maze)):
+        box += "+---"
+    print(colored(box + "+", "red"))
 def path():
     pass
 def main():
