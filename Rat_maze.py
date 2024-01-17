@@ -26,8 +26,22 @@ def print_maze(maze):
     for t in range(len(maze)):
         box += "+---"
     print(colored(box + "+", "red"))
-def path():
-    pass
+def path(maze, st, end):
+    n = len(maze)
+    if st < 0 or end < 0 or st == n or end == n or maze[st][end] == colored('▓','red') or maze[st][end] == '◍':
+        return False
+    if st == n - 1 and end == n - 1:
+        return True
+    maze[st][end] = colored('◍', 'green')
+    path_found = (
+        path(maze, st, end + 1) or
+        path(maze, st + 1, end) or
+        path(maze, st - 1, end) or
+        path(maze, st, end - 1)
+    )
+    if not path_found:
+        maze[st][end] = colored('◌', 'blue')
+    return maze
 def main():
     n = int(input('Enter the size of the maze (nxn): '))
     maze = generate_maze(n)
