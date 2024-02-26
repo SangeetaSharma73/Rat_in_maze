@@ -44,7 +44,10 @@ Mazes should be provided in text files with the following format:
 - **'S'**: Denotes the start point.
 - **'E'**: Denotes the end point.
 - **'◌' (space)**: Denotes the traversable path.
+
+
 Example:
+
 ![Output](Output.png)
 
 ## Contributions
