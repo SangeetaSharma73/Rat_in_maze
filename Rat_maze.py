@@ -1,5 +1,39 @@
 import random
 from termcolor import colored
+
+def print_maze(maze):
+    for i in range(len(maze)):
+        box = ''
+        for k in range(len(maze)):
+            box += "+---"
+        print(colored(box + "+", "red"))
+
+        print('| ', end='')
+        for j in range(len(maze)):
+            print(maze[i][j], end=" | ")
+        print()
+    box = ''
+    for t in range(len(maze)):
+        box += "+---"
+    print(colored(box + "+", "red"))
+    
+def path(maze, st, end):
+    n = len(maze)
+    if st < 0 or end < 0 or st == n or end == n or maze[st][end] == colored('▓','red') or maze[st][end] == '◍':
+        return False
+    if st == n - 1 and end == n - 1:
+        return True
+    maze[st][end] = colored('◍', 'green')
+    path_found = (
+        path(maze, st, end + 1) or
+        path(maze, st + 1, end) or
+        path(maze, st - 1, end) or
+        path(maze, st, end - 1)
+    )
+    if not path_found:
+        maze[st][end] = colored('◌', 'blue')
+    return maze
+
 def generate_maze(n):
     arr = [[colored("◌", "blue") for _ in range(n)] for _ in range(n)]
     size = n * n // 4
@@ -11,10 +45,7 @@ def generate_maze(n):
             continue
         arr[x][y] = colored('▓', 'red')
     return arr
-def print_maze(maze):
-    pass
-def path():
-    pass
+
 def main():
     n = int(input('Enter the size of the maze (nxn): '))
     maze = generate_maze(n)
