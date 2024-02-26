@@ -46,6 +46,7 @@ Mazes should be provided in text files with the following format:
 - **'◌' (space)**: Denotes the traversable path.
 Example:
 ![Output](Output.png)
+
 ## Contributions
 Contributions to this project are welcome! If you have any suggestions, bug reports, or feature requests, feel free to open an issue or create a pull request.
 ---
