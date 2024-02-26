@@ -10,7 +10,7 @@ This Terminal-Based Maze Solver is a command-line tool designed to find the solu
 
 - **Multiple Algorithms**: Supports various maze-solving algorithms for finding the solution.
 
-- **Visual Representation**: Renders the maze and solution path in the terminal for visualization.
+- **Visual Representation**: Renders the maze and solution  path in the terminal for visualization.
 
 ## Usage
 To use the Terminal-Based Maze Solver, follow these steps:
